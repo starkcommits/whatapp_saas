@@ -1,0 +1,88 @@
+{
+    "actions": [],
+    "autoname": "format:INS-{#####}",
+    "creation": "2024-01-01 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "instance_name",
+        "instance_id",
+        "status",
+        "subscription",
+        "whatsapp_customer",
+        "qrcode",
+        "endpoint_url"
+    ],
+    "fields": [
+        {
+            "fieldname": "instance_name",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Instance Name",
+            "reqd": 1
+        },
+        {
+            "fieldname": "instance_id",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Instance ID",
+            "unique": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Connected\nDisconnected\nBanned",
+            "default": "Disconnected"
+        },
+        {
+            "fieldname": "subscription",
+            "fieldtype": "Link",
+            "label": "Subscription",
+            "options": "WhatsApp Subscription",
+            "reqd": 1
+        },
+        {
+            "fieldname": "whatsapp_customer",
+            "fieldtype": "Link",
+            "label": "WhatsApp Customer",
+            "options": "WhatsApp Customer",
+            "reqd": 1
+        },
+        {
+            "fieldname": "qrcode",
+            "fieldtype": "Code",
+            "label": "QR Code",
+            "read_only": 1
+        },
+        {
+            "fieldname": "endpoint_url",
+            "fieldtype": "Data",
+            "label": "Endpoint URL"
+        }
+    ],
+    "modified": "2024-01-01 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "WhatsApp SaaS",
+    "name": "WhatsApp Instance",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}
