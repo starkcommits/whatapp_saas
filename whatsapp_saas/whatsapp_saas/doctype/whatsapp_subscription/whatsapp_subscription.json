@@ -1,11 +1,11 @@
 {
     "actions": [],
-    "autoname": "format:SUB-{customer}-{#####}",
+    "autoname": "format:SUB-{whatsapp_customer}-{#####}",
     "creation": "2024-01-01 00:00:00.000000",
     "doctype": "DocType",
     "engine": "InnoDB",
     "field_order": [
-        "customer",
+        "whatsapp_customer",
         "plan",
         "status",
         "start_date",
@@ -14,11 +14,11 @@
     ],
     "fields": [
         {
-            "fieldname": "customer",
+            "fieldname": "whatsapp_customer",
             "fieldtype": "Link",
             "in_list_view": 1,
-            "label": "Customer",
-            "options": "Customer",
+            "label": "WhatsApp Customer",
+            "options": "WhatsApp Customer",
             "reqd": 1
         },
         {

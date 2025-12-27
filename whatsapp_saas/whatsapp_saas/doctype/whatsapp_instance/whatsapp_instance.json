@@ -9,7 +9,7 @@
         "instance_id",
         "status",
         "subscription",
-        "customer",
+        "whatsapp_customer",
         "qrcode",
         "endpoint_url"
     ],
@@ -45,10 +45,10 @@
             "reqd": 1
         },
         {
-            "fieldname": "customer",
+            "fieldname": "whatsapp_customer",
             "fieldtype": "Link",
-            "label": "Customer",
-            "options": "Customer",
+            "label": "WhatsApp Customer",
+            "options": "WhatsApp Customer",
             "reqd": 1
         },
         {

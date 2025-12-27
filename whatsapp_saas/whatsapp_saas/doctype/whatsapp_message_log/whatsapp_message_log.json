@@ -10,6 +10,7 @@
         "timestamp",
         "status",
         "direction",
+        "whatsapp_customer",
         "subscription"
     ],
     "fields": [
@@ -47,6 +48,13 @@
             "label": "Direction",
             "options": "Outbound\nInbound",
             "reqd": 1
+        },
+        {
+            "fieldname": "whatsapp_customer",
+            "fieldtype": "Link",
+            "label": "WhatsApp Customer",
+            "options": "WhatsApp Customer",
+            "read_only": 1
         },
         {
             "fieldname": "subscription",
