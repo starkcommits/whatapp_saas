@@ -1,0 +1,8 @@
+// Copyright (c) 2025, Frappe Baileys and contributors
+// For license information, please see license.txt
+
+// frappe.ui.form.on("WhatsApp Instance", {
+// 	refresh(frm) {
+
+// 	},
+// });

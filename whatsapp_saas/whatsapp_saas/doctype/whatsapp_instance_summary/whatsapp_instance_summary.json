@@ -1,0 +1,54 @@
+{
+    "actions": [],
+    "creation": "2024-01-01 00:00:00.000000",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "instance",
+        "instance_id",
+        "status",
+        "endpoint_url"
+    ],
+    "fields": [
+        {
+            "fieldname": "instance",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Instance",
+            "options": "WhatsApp Instance",
+            "reqd": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "instance_id",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Instance ID",
+            "read_only": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Data",
+            "in_list_view": 1,
+            "label": "Status",
+            "read_only": 1
+        },
+        {
+            "fieldname": "endpoint_url",
+            "fieldtype": "Data",
+            "label": "Endpoint URL",
+            "read_only": 1
+        }
+    ],
+    "istable": 1,
+    "modified": "2024-01-01 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "WhatsApp SaaS",
+    "name": "WhatsApp Instance Summary",
+    "owner": "Administrator",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}
