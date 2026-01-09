@@ -239,3 +239,19 @@ def signup():
         frappe.db.rollback(save_point="whatsapp_signup")
         frappe.log_error(frappe.get_traceback(), "WhatsApp Signup Error")
         return {"error": str(e), "traceback": frappe.get_traceback()}
+
+@frappe.whitelist(allow_guest=True, methods=['POST'])
+def webhook():
+    try:
+        frappe.log_error("WhatsApp Webhook Received",frappe.request.data)
+        data = {}
+        if frappe.request.content_type == 'application/json':
+            data = frappe.request.json
+        else:
+            data = frappe.request.form.to_dict()
+        # Process webhook data as needed
+        
+    
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "WhatsApp Webhook Error")
+        return {"error": str(e), "traceback": frappe.get_traceback()}

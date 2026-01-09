@@ -7,13 +7,9 @@
  "field_order": [
   "instance_name",
   "instance_id",
+  "column_break_kiac",
   "status",
-  "subscription",
-  "whatsapp_customer",
-  "phone_number",
-  "column_break_optu",
-  "qrcode",
-  "qr_available"
+  "phone_number"
  ],
  "fields": [
   {
@@ -28,38 +24,16 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Instance ID",
+   "read_only": 1,
    "unique": 1
   },
   {
-   "default": "Disconnected",
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Connected\nConnecting\nDisconnected\nBanned"
-  },
-  {
-   "fieldname": "subscription",
-   "fieldtype": "Link",
-   "label": "Subscription",
-   "options": "WhatsApp Subscription"
-  },
-  {
-   "fieldname": "whatsapp_customer",
-   "fieldtype": "Link",
-   "label": "WhatsApp Customer",
-   "options": "WhatsApp Customer",
-   "reqd": 1
-  },
-  {
-   "fieldname": "qrcode",
-   "fieldtype": "Code",
-   "label": "QR Code",
+   "options": "\nConnecting\nConnected\nDisconnected\nBanned",
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break_optu",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "phone_number",
@@ -68,15 +42,12 @@
    "read_only": 1
   },
   {
-   "default": "1",
-   "fieldname": "qr_available",
-   "fieldtype": "Check",
-   "label": "QR Available",
-   "read_only": 1
+   "fieldname": "column_break_kiac",
+   "fieldtype": "Column Break"
   }
  ],
  "links": [],
- "modified": "2025-12-31 00:36:38.767123",
+ "modified": "2026-01-04 20:12:00.674500",
  "modified_by": "Administrator",
  "module": "WhatsApp SaaS",
  "name": "WhatsApp Instance",

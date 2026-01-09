@@ -11,6 +11,7 @@ app_license = "mit"
 override_whitelisted_methods = {
 	# Onboarding & Account Management
 	"onboard": "whatsapp_saas.api.api.signup",
+	"whatsapp.webhook": "whatsapp_saas.api.api.webhook",
 	
 	# Instance Management
 	"instance_create": "whatsapp_saas.api.endpoints.instance_create",

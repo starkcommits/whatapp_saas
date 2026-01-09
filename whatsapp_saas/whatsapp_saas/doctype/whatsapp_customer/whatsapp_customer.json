@@ -1,6 +1,7 @@
 {
  "actions": [],
- "autoname": "field:customer_name",
+ "allow_rename": 1,
+ "autoname": "field:user",
  "creation": "2024-01-01 00:00:00",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -31,7 +32,9 @@
    "in_list_view": 1,
    "label": "Frappe User",
    "options": "User",
-   "reqd": 1
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "email",
@@ -72,7 +75,7 @@
   }
  ],
  "links": [],
- "modified": "2025-12-30 21:05:50.101700",
+ "modified": "2026-01-04 20:03:13.026684",
  "modified_by": "Administrator",
  "module": "WhatsApp SaaS",
  "name": "WhatsApp Customer",

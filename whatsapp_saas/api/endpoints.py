@@ -181,16 +181,80 @@ def instance_get(**kwargs):
     instance_id = kwargs.get('instance_id')
     return _proxy_request(f"instance/{instance_id}", "GET", **kwargs)
 
+# @frappe.whitelist(allow_guest=False)
+# def instance_qr(**kwargs):
+#     instance_id = kwargs.get('instance_id')
+#     return _proxy_request(f"instance/{instance_id}/qr", "GET", **kwargs)
+
 @frappe.whitelist(allow_guest=False)
 def instance_qr(**kwargs):
-    instance_id = kwargs.get('instance_id')
-    return _proxy_request(f"instance/{instance_id}/qr", "GET", **kwargs)
+    try:
+        
+        instance_id = kwargs.get('instance_id')
+        url = f"http://whatsapp-baileys:3000/api/instance/{instance_id}/qr"
+        data = {
+            "instance_id": instance_id
+        }
+        response = requests.get(url, json=data, timeout=60)
+
+        response_data = response.json()
+        return response_data
+
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Instance QR Error")
+        return {
+            "status": "error",
+            "message": "An error occurred while retrieving QR code."
+        }
+    # return _proxy_request(f"instance/{instance_id}/qr", "GET", **kwargs)
+
+
+
+# @frappe.whitelist(allow_guest=False)
+# def instance_status(**kwargs):
+#     instance_id = kwargs.get('instance_id')
+#     response = _proxy_request(f"instance/{instance_id}/status", "GET", **kwargs)
+#     # Update instance status in Frappe
+#     try:
+#         instance = frappe.get_doc("WhatsApp Instance", {"instance_id": instance_id})
+#         if response.get('success'):
+#             data = response.get('data', {})
+#             status = data.get('status', instance.status)
+#             if status == "connected":
+#                 instance.status = "Connected"
+#                 instance.phone_number = data.get('phoneNumber', instance.phone_number)
+#                 instance.qr_available = False
+
+#             elif status == "connecting":
+#                 instance.status = "Connecting"
+#             elif status == "disconnected" or status == "qr":
+#                 instance.status = "Disconnected"
+#                 instance.qr_available = True
+#                 instance.phone_number = None
+#             else:
+#                 instance.status = status
+                
+#             instance.save(ignore_permissions=True)
+#             frappe.db.commit()
+#             return response
+#     except Exception as e:
+#         frappe.log_error(frappe.get_traceback(), "Instance Status Update Error")
+
+#     return {
+#         "error": "Failed to check instance status"
+#     }
 
 @frappe.whitelist(allow_guest=False)
 def instance_status(**kwargs):
     instance_id = kwargs.get('instance_id')
-    response = _proxy_request(f"instance/{instance_id}/status", "GET", **kwargs)
+    # response = _proxy_request(f"instance/{instance_id}/status", "GET", **kwargs)
     # Update instance status in Frappe
+    url = f"http://whatsapp-baileys:3000/api/instance/{instance_id}/status"
+    data = {
+        "instance_id": instance_id
+    }
+    response = requests.get(url, json=data, timeout=60)
+    response = response.json()
     try:
         instance = frappe.get_doc("WhatsApp Instance", {"instance_id": instance_id})
         if response.get('success'):
@@ -225,10 +289,25 @@ def instance_delete(**kwargs):
     instance_id = kwargs.get('instance_id')
     return _proxy_request(f"instance/{instance_id}", "DELETE", **kwargs)
 
+# @frappe.whitelist(allow_guest=False)
+# def instance_logout(**kwargs):
+#     instance_id = kwargs.get('instance_id')
+#     return _proxy_request(f"instance/{instance_id}/logout", "POST", **kwargs)
+
 @frappe.whitelist(allow_guest=False)
 def instance_logout(**kwargs):
-    instance_id = kwargs.get('instance_id')
-    return _proxy_request(f"instance/{instance_id}/logout", "POST", **kwargs)
+    try:
+        instance_id = kwargs.get('instance_id')
+        url = f"http://whatsapp-baileys:3000/api/instance/{instance_id}/logout"
+        data = {
+            "instance_id": instance_id
+        }
+        response = requests.post(url, json=data, timeout=60)
+        response_data = response.json()
+        return response_data
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "Instance Logout Error")
+        frappe.throw(str(e))
 
 # Core Messaging
 @frappe.whitelist(allow_guest=False)
