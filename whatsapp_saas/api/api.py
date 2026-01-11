@@ -251,6 +251,26 @@ def webhook():
             data = frappe.request.form.to_dict()
         # Process webhook data as needed
         
+        if frappe.db.exists("WhatsApp Instance",{"instance_id":data.get("instanceId")}):
+            
+            instance = frappe.get_doc("WhatsApp Instance",{"instance_id":data.get("instanceId")})
+            if data.get("event") == "connection.update":
+                webhook_data = data.get("data",{})
+                if webhook_data.get("status") == "connected":
+                    instance.status = "Connected"
+                    instance.phone_number = webhook_data.get("phoneNumber")
+                    instance.save(ignore_permissions=True)
+                    frappe.db.commit()
+
+                elif webhook_data.get("status") == "logged_out":
+                    
+                    instance.status = "Disconnected"
+                    instance.save(ignore_permissions=True)
+                    frappe.db.commit()
+        else:
+            frappe.throw(_("Instance not found"))
+
+        return {"message": "Webhook processed successfully"}
     
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "WhatsApp Webhook Error")

@@ -26,13 +26,13 @@ def _proxy_request(endpoint, method="POST", require_instance=True, **kwargs):
             if not instance_id:
                 frappe.throw(_("instance_id is required"))
             
-            customer_name = frappe.db.get_value("WhatsApp Instance", {"instance_id": instance_id}, "whatsapp_customer")
-            if not customer_name:
-                frappe.throw(_("No WhatsApp Customer linked to this user"))
+            # customer_name = frappe.db.get_value("WhatsApp Instance", {"instance_id": instance_id}, "whatsapp_customer")
+            # if not customer_name:
+            #     frappe.throw(_("No WhatsApp Customer linked to this user"))
 
             # Verify instance ownership
-            instance = frappe.get_doc("WhatsApp Instance", {"instance_id": instance_id})
-            if not instance or instance.whatsapp_customer != customer_name:
+            instance = frappe.get_doc("WhatsApp Instance", {"instance_id": instance_id, "owner": user})
+            if not instance:
                 frappe.throw(_("Unauthorized access to instance"))
             
             subscription = frappe.get_doc("WhatsApp Subscription", instance.subscription)
